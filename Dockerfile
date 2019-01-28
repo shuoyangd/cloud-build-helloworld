@@ -19,6 +19,6 @@ RUN chmod +x ducttape
 RUN mv ducttape ducttape.jar /bin/
 
 # build
-git clone https://github.com/shuoyangd/cloud-build-helloworld
-cd cloud-build-helloworld
+RUN git clone https://github.com/shuoyangd/cloud-build-helloworld
+RUN cd cloud-build-helloworld
 RUN ducttape test.tape
