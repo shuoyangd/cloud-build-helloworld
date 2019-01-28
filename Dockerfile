@@ -16,4 +16,7 @@ RUN apt-get install wget -y
 RUN wget http://www.cs.jhu.edu/~sding/downloads/ducttape.tar
 RUN tar -xvf ducttape.tar
 RUN chmod +x ducttape
-RUN mv ducttape ducttape.jar bin/
+RUN mv ducttape ducttape.jar /bin/
+
+# build
+RUN ducttape test.tape
