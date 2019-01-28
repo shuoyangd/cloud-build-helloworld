@@ -1,0 +1,6 @@
+steps:
+- name: 'ubuntu'
+  args: ['bash', 'echo', 'hello']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/Dockerfile', '.']
+  images: ['build', '-t', 'gcr.io/$PROJECT_ID/Dockerfile', '.']
