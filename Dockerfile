@@ -21,5 +21,6 @@ RUN mv ducttape ducttape.jar /bin/
 # build
 RUN apt-get install git -y
 RUN git clone https://github.com/shuoyangd/cloud-build-helloworld
-RUN cd cloud-build-helloworld
-RUN ducttape test.tape
+
+# run the test
+CMD cd cloud-build-helloworld && dducttape test.tape
