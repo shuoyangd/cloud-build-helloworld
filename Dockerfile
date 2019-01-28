@@ -7,7 +7,3 @@ RUN wget http://www.cs.jhu.edu/~sding/downloads/ducttape.tar && tar -xvf ducttap
 RUN python -m venv pytorch \
     && /bin/bash -c "source pytorch/bin/activate" \
     && pip install https://download.pytorch.org/whl/cpu/torch-1.0.0-cp36-cp36m-linux_x86_64.whl
-RUN git clone https://github.com/shuoyangd/cloud-build-helloworld
-
-# run the test
-CMD cd cloud-build-helloworld && dducttape test.tape

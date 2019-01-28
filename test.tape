@@ -1,8 +1,8 @@
 global {
   data=(DataSet:
-    a="/export/c11/shuoyangd/projects/ducttape_test/1"
-    b="/export/c11/shuoyangd/projects/ducttape_test/2"
-    c="/export/c11/shuoyangd/projects/ducttape_test/3"
+    a="1"
+    b="2"
+    c="3"
   ) 
 }
 
@@ -13,6 +13,16 @@ task merge
   for datum in $in ; do
     cat $datum >> out
   done
+}
+
+task check
+  < in=$out@merge
+  > out {
+
+  if [[ -f $in ]] ; then
+    echo `wc -l $in`
+    echo "checked" >> $out
+  fi
 }
 
 # COMMANDS: the bash commands from some task
@@ -35,5 +45,5 @@ submitter shell :: COMMANDS TASK_VARIABLES {
 }
 
 plan test {
-  reach merge via (DataSet: a b)
+  reach check via (DataSet: a b)
 }
