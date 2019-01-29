@@ -1,5 +1,4 @@
 # cloud-build-helloworld
---
 
 A preliminary project before adding cloud build to tape4nmt.
 
