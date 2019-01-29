@@ -6,4 +6,3 @@ steps:
 - id: test
   name: 'gcr.io/$PROJECT_ID/tape4nmt-builder'
   args: [ './test.sh' ]
-  waitFor: build-builder
