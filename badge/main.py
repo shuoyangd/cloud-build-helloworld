@@ -1,16 +1,15 @@
 from google.cloud import storage
 import base64
-import json
 
 def df(event, callback):
   pubsubMessage = event['data']
-  buildResource = json.load(base64.b64decode(pubsubMessage))
+  buildResource = eval(base64.b64decode(pubsubMessage))
   print(buildResource)
 
-  repo = buildResource.substitutions.REPO_NAME
-  repoName = buildResource.substitutions.REPO_NAME
-  branch = buildResource.substitutions.BRANCH_NAME
-  status = buildResource.status
+  repo = buildResource['substitutions']['REPO_NAME']
+  repoName = buildResource['substitutions']['REPO_NAME']
+  branch = buildResource['substitutions']['BRANCH_NAME']
+  status = buildResource['status']
 
   if branch == "master":
     print("Creating badge for {0} on branch {1}".format(repoName, branch))
