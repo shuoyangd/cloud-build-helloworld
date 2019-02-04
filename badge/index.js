@@ -27,6 +27,10 @@ exports.df = (event, callback) => {
       const filename = "build/myRepo-" + branch + ".svg";
       console.log("Filename will be %s", filename);
       const storage = new Storage();
+      var options = {
+        entity: 'allUsers',
+        role: storage.acl.READER_ROLE
+      };
 
       if (repo && branch && status == "SUCCESS") {
         console.log("Detected build success!");
@@ -38,7 +42,8 @@ exports.df = (event, callback) => {
         storage
           .bucket("tape4nmt-builds-badge")
           .file(filename)
-          .makePublic(function(err, apiResponse) {});
+          .acl.add(options, function(err, aclObject) {});
+          // .makePublic(function(err, apiResponse) {});
         console.log("Badge set to public");
       }
       if (repo && branch && status == "FAILURE") {
@@ -51,7 +56,8 @@ exports.df = (event, callback) => {
         storage
           .bucket("tape4nmt-builds-badge")
           .file(filename)
-          .makePublic(function(err, apiResponse) {});
+          .acl.add(options, function(err, aclObject) {});
+          // .makePublic(function(err, apiResponse) {});
         console.log("Badge set to public");
       }
     }
