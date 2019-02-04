@@ -3,9 +3,9 @@ import base64
 import json
 
 def df(event, callback):
-  print(event)
   pubsubMessage = event['data']
-  buildResource = json.load(base64.b64decode(pubsubMessage.data))
+  buildResource = json.load(base64.b64decode(pubsubMessage))
+  print(buildResource)
 
   repo = buildResource.substitutions.REPO_NAME
   repoName = buildResource.substitutions.REPO_NAME
