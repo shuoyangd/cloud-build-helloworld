@@ -23,7 +23,8 @@ def df(event, callback):
       blob = bucket.blob("build/success.svg")
       bucket.copy_blob(blob, bucket, filename)
       print("Switched badge to build success")
-      blob.make_public()
+      badge_blob = bucket.blob(filename)
+      badge_blob.make_public()
       print("Badge set to public.")
     if repo and branch and status == "FAILURE":
       print("Detected build failure!")
@@ -31,7 +32,8 @@ def df(event, callback):
       blob = bucket.blob("build/failure.svg")
       bucket.copy_blob(blob, bucket, filename)
       print("Switched badge to build failure")
-      blob.make_public()
+      badge_blob = bucket.blob(filename)
+      badge_blob.make_public()
       print("Badge set to public.")
 
   callback()
