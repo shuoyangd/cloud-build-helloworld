@@ -1,7 +1,6 @@
 FROM python:3.6-stretch
 MAINTAINER Shuoyang Ding <dings@jhu.edu>
 WORKDIR /root/
-&&
 RUN apt-get update && apt-get install apt-utils -y && apt-get update && apt-get -y upgrade
 RUN apt-get install default-jre wget git -y
 RUN wget http://www.cs.jhu.edu/~sding/downloads/ducttape.tar && tar -xvf ducttape.tar && chmod +x ducttape && mv ducttape ducttape.jar /bin/
