@@ -35,5 +35,3 @@ def df(event, callback):
       badge_blob = bucket.blob(filename)
       badge_blob.make_public()
       print("Badge set to public.")
-
-  callback()
